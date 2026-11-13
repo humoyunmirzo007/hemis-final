@@ -1,20 +1,19 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# HEMIS demo
 
-# Run and deploy your AI Studio app
+Демо-макет студенческого мобильного приложения в стиле HEMIS: React + Vite + Tailwind.
+Это учебный макет, а не официальное приложение. Все данные вымышленные и лежат в `src/data.ts`,
+сервера и настоящего входа нет.
 
-This contains everything you need to run your app locally.
+## Запуск
 
-View your app in AI Studio: https://ai.studio/apps/563673fb-a8a0-4e7a-b84e-7707ae89de10
+1. `npm install`
+2. `npm run dev`
+3. Открыть http://localhost:3000
 
-## Run Locally
+## Структура
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- `src/data.ts` — демо-данные: студент, семестры, оценки, расписание, экзамены, пропуски
+- `src/ui.tsx` — общие элементы: шапка экрана, пустые состояния, загрузка, фильтры
+- `src/tabs.tsx` — пять вкладок: Главная, Расписание, HEMIS AI, Предметы, Все
+- `src/screens.tsx` — внутренние экраны: успеваемость, посещаемость, документы, платежи и другие
+- `src/App.tsx` — рамка телефона, навигация, боковое меню, вход в демо
