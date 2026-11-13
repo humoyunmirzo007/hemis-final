@@ -18,7 +18,10 @@ export const cx = (...parts: any[]) => parts.filter(Boolean).join(' ');
 
 const clock = () => new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
 
-/** Fake phone status bar. */
+/**
+ * Top of every screen. In the desktop phone frame it draws a fake status bar;
+ * on a real phone the system bar is already there, so it only leaves room for it.
+ */
 export function StatusRow({ light }: { light?: boolean }) {
   const [time, setTime] = useState(clock());
   useEffect(() => {
@@ -26,7 +29,9 @@ export function StatusRow({ light }: { light?: boolean }) {
     return () => clearInterval(id);
   }, []);
   return (
-    <div className={cx('h-11 shrink-0 flex items-end justify-between px-6 pb-1.5 text-[14px] font-semibold', light ? 'text-white' : 'text-slate-900')}>
+    <>
+    <div className="sm:hidden shrink-0" style={{ height: 'calc(env(safe-area-inset-top) + 6px)' }} />
+    <div className={cx('hidden sm:flex h-11 shrink-0 items-end justify-between px-6 pb-1.5 text-[14px] font-semibold', light ? 'text-white' : 'text-slate-900')}>
       <span>{time}</span>
       <span className="flex items-center gap-1.5">
         <Signal size={14} />
@@ -34,6 +39,7 @@ export function StatusRow({ light }: { light?: boolean }) {
         <BatteryMedium size={18} />
       </span>
     </div>
+    </>
   );
 }
 
@@ -59,7 +65,7 @@ export function Page({ title, right, children, bg = 'bg-[#f2f3f7]', blueTitle, p
         <h1 className={cx('flex-1 truncate text-[20px] font-semibold', blueTitle && 'text-brand text-center')}>{title}</h1>
         {right}
       </div>
-      <div className={cx('flex-1 overflow-y-auto no-scrollbar', pad && 'px-4 pb-8')}>{children}</div>
+      <div className={cx('flex-1 overflow-y-auto no-scrollbar', pad && 'px-4 pb-safe-8')}>{children}</div>
     </div>
   );
 }

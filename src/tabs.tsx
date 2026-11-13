@@ -71,7 +71,7 @@ export function Home() {
         </label>
       </div>
 
-      <div className="p-4 space-y-4 pb-32">
+      <div className="p-4 space-y-4 pb-tab">
         {!query && (
           <>
             <button onClick={() => nav.push('qr')} className="g-btn w-full flex items-center gap-3 p-4 rounded-2xl text-left text-white">
@@ -184,7 +184,7 @@ export function Schedule() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto no-scrollbar px-4 pt-4 pb-28 space-y-3">
+      <div className="flex-1 overflow-y-auto no-scrollbar px-4 pt-4 pb-tab space-y-3">
         {lessons.map((l) => (
           <div key={l.start} className="fade-in flex bg-white rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,.07)]">
             <div className="g-time w-[66px] shrink-0 flex flex-col items-center justify-between py-4 text-white">
@@ -250,7 +250,7 @@ export function Ai() {
         <h1 className="text-[20px] font-medium">HEMIS AI</h1>
         <Info size={22} className="absolute right-4 text-brand" />
       </div>
-      <div className="flex-1 overflow-y-auto no-scrollbar px-4 pb-28">
+      <div className="flex-1 overflow-y-auto no-scrollbar px-4 pb-tab">
         <div className="flex items-center justify-between pb-3 border-b border-slate-200">
           <span className="text-[30px] font-extrabold tracking-tight">HEMIS <span className="g-ai relative">AI<Sparkles size={12} className="absolute -left-2 -top-1 text-violet-500" /></span></span>
           <span className="flex items-center gap-1 text-[13px] font-medium text-violet-600"><Zap size={13} fill="currentColor" /> AI анализ</span>
@@ -303,7 +303,7 @@ export function Subjects() {
           <span className="ml-auto"><SemPick value={sem} onChange={setSem} /></span>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto no-scrollbar px-4 pt-3 pb-28 space-y-3.5">
+      <div className="flex-1 overflow-y-auto no-scrollbar px-4 pt-3 pb-tab space-y-3.5">
         {list.map((s) => (
           <div key={s.name} className="bg-white rounded-xl border border-slate-200/80 shadow-[0_1px_4px_rgba(0,0,0,.06)] p-4">
             <p className="text-[15px] font-semibold">{s.name}</p>
@@ -351,7 +351,7 @@ export function All() {
           <button onClick={nav.logout} aria-label="Выйти" className="w-10 h-10 grid place-items-center"><LogOut size={22} /></button>
         </div>
       </div>
-      <div className="flex-1 overflow-y-auto no-scrollbar grid grid-cols-2 gap-3 content-start px-4 pt-3 pb-28">
+      <div className="flex-1 overflow-y-auto no-scrollbar grid grid-cols-2 gap-3 content-start px-4 pt-3 pb-tab">
         {ALL.map((it) => (
           <button
             key={it.label}
@@ -379,7 +379,7 @@ const TABS = [
 
 export function BottomNav({ tab, onChange }: { tab: string; onChange: (t: string) => void }) {
   return (
-    <nav className="absolute inset-x-0 bottom-0 z-30 h-[84px] bg-white flex items-start justify-around px-1 pt-2.5 shadow-[0_-2px_10px_rgba(0,0,0,.05)]">
+    <nav className="absolute inset-x-0 bottom-0 z-30 tabbar bg-white flex items-start justify-around px-1 pt-2.5 shadow-[0_-2px_10px_rgba(0,0,0,.05)]">
       {TABS.map((t) => {
         const on = tab === t.id;
         return (
